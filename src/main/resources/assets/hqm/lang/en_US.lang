@@ -321,6 +321,10 @@ hqm.command.questNotFound=Quest page %s not found
 hqm.command.info.help.start=Available commands are:
 hqm.command.help.syntax0=/hqm help <command>
 hqm.command.help.info0=For help with all available commands.
+
+hqm.command.team.syntax0=/hqm team <add|remove> <team> <player>
+hqm.command.team.info0=Manage team.
+
 hqm.command.version.syntax0=/hqm version
 hqm.command.version.info0=Get mod version.
 hqm.command.hardcore.syntax0=/hqm hardcore

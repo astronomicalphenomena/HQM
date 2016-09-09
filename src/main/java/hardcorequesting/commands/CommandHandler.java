@@ -16,6 +16,7 @@ public class CommandHandler extends CommandBase {
 
     static {
         register(new CommandHelp());
+        register(new CommandTeam());
         register(new CommandVersion());
         register(new CommandQuest());
         register(new CommandHardcore());

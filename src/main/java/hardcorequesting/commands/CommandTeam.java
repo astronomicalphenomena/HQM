@@ -2,6 +2,8 @@ package hardcorequesting.commands;
 
 import hardcorequesting.QuestingData;
 import hardcorequesting.Team;
+import hardcorequesting.TeamStats;
+import hardcorequesting.network.DataBitHelper;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -29,14 +31,37 @@ public class CommandTeam extends CommandBase
 
 		if(arguments[0]=="add")
 		{
-			if(QuestingData.getQuestingData(arguments[2])==null||QuestingData.getQuestingData(arguments[2]).getTeam()!=null)
+			String playertoadd = arguments[2];
+			if (!QuestingData.hasData(playertoadd))
 			{
+				sendChat(sender, Team.ErrorMessage.INVALID_PLAYER.getHeader());
+				sendChat(sender, Team.ErrorMessage.INVALID_PLAYER.getMessage());
+				return;
+			}
+
+			if (!QuestingData.getQuestingData(playertoadd).getTeam().isSingle())
+			{
+				sendChat(sender, Team.ErrorMessage.IN_PARTY.getHeader());
+				sendChat(sender, Team.ErrorMessage.IN_PARTY.getMessage());
 				return;
 			}
 			List<Team> teamList = QuestingData.getTeams();
 			Team team = teamList.get(Integer.getInteger(arguments[1]));
-			if(team==null){return;}
+			if(team==null)
+			{
+				//sendChat(sender,"");
+				return;
+			}
+			EntityPlayer entityPlayertoadd = QuestingData.getPlayer(playertoadd);
+			Team.PlayerEntry entry = new Team.PlayerEntry(playertoadd, true, false);
+			team.getPlayers().add(entry);
+			QuestingData.getQuestingData(entityPlayertoadd).setTeam(team);
 
+
+			team.refreshData();
+			team.refreshTeamData(Team.UpdateType.ALL);
+			//Team.declineAll(playertoadd);
+			TeamStats.refreshTeam(team);
 
 		}
 		else if (arguments[0]=="remove")
@@ -45,6 +70,8 @@ public class CommandTeam extends CommandBase
 			Team team = teamList.get(Integer.getInteger(arguments[1]));
 			if(QuestingData.getQuestingData(arguments[2])==null||team==null||team.getEntry(arguments[2])==null)
 			{
+				sendChat(sender, Team.ErrorMessage.INVALID_PLAYER.getHeader());
+				sendChat(sender, Team.ErrorMessage.INVALID_PLAYER.getMessage());
 				return;
 			}
 

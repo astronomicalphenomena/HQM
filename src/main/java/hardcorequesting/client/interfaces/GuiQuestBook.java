@@ -1,9 +1,9 @@
 package hardcorequesting.client.interfaces;
 
-import codechicken.nei.NEIClientConfig;
-import codechicken.nei.NEIClientUtils;
-import codechicken.nei.recipe.GuiCraftingRecipe;
-import codechicken.nei.recipe.GuiUsageRecipe;
+//import codechicken.nei.NEIClientConfig;
+//import codechicken.nei.NEIClientUtils;
+//import codechicken.nei.recipe.GuiCraftingRecipe;
+//import codechicken.nei.recipe.GuiUsageRecipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -723,16 +723,16 @@ public class GuiQuestBook extends GuiBase {
     }
 
     private void handleNEI(int k) {
-        ItemStack stackover = selected;
-        if (stackover != null) {
-            if (k == NEIClientConfig.getKeyBinding("gui.usage") || (k == NEIClientConfig.getKeyBinding("gui.recipe") && NEIClientUtils.shiftKey())) {
-                GuiUsageRecipe.openRecipeGui("item", stackover.copy());
-            }
-
-            if (k == NEIClientConfig.getKeyBinding("gui.recipe")) {
-                GuiCraftingRecipe.openRecipeGui("item", stackover.copy());
-            }
-        }
+//        ItemStack stackover = selected;
+//        if (stackover != null) {
+//            if (k == NEIClientConfig.getKeyBinding("gui.usage") || (k == NEIClientConfig.getKeyBinding("gui.recipe") && NEIClientUtils.shiftKey())) {
+//                GuiUsageRecipe.openRecipeGui("item", stackover.copy());
+//            }
+//
+//            if (k == NEIClientConfig.getKeyBinding("gui.recipe")) {
+//                GuiCraftingRecipe.openRecipeGui("item", stackover.copy());
+//            }
+//        }
     }
 
     @Override

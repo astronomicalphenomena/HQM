@@ -28,7 +28,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
 
             @Override
             public boolean isVisible(GuiBase gui, EntityPlayer player) {
-                return inviteTeam == null && getTeam().isSingle();
+                return false;
             }
 
             @Override
@@ -45,7 +45,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
 
             @Override
             public boolean isVisible(GuiBase gui, EntityPlayer player) {
-                return !getTeam().isSingle() && getEntry(getTeam()).isOwner();
+                return false;
             }
 
             @Override
@@ -62,7 +62,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
 
             @Override
             public boolean isVisible(GuiBase gui, EntityPlayer player) {
-                return inviteTeam != null;
+                return false;
             }
 
             @Override
@@ -79,7 +79,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
 
             @Override
             public boolean isVisible(GuiBase gui, EntityPlayer player) {
-                return inviteTeam != null;
+                return false;
             }
 
             @Override
@@ -97,7 +97,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
 
             @Override
             public boolean isVisible(GuiBase gui, EntityPlayer player) {
-                return inviteTeam != null;
+                return false;
             }
 
             @Override
@@ -114,7 +114,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
 
             @Override
             public boolean isVisible(GuiBase gui, EntityPlayer player) {
-                return selectedEntry != null && getEntry(getTeam()).isOwner();
+                return false;
             }
 
             @Override
@@ -137,7 +137,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
 
             @Override
             public boolean isVisible(GuiBase gui, EntityPlayer player) {
-                return !getTeam().isSingle() && !getEntry(getTeam()).isOwner();
+                return false;
             }
 
             @Override
@@ -154,7 +154,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
 
             @Override
             public boolean isVisible(GuiBase gui, EntityPlayer player) {
-                return !getTeam().isSingle() && selectedEntry != null && selectedEntry.isOwner();
+                return false;
             }
 
             @Override
@@ -186,7 +186,7 @@ public class GuiEditMenuTeam extends GuiEditMenu {
         textBoxes.add(teamName = new TextBoxName(gui, "", 180, 26) {
             @Override
             protected boolean isVisible() {
-                return getTeam().isSingle() && inviteTeam == null;
+                return false;
             }
         });
         teamName.setWidth((int) ((GuiQuestBook.PAGE_WIDTH - TITLE_X - 10) * 0.7F));
